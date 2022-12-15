@@ -21,15 +21,14 @@ class HomeScreen extends ConsumerWidget {
         bottomNavigationBar: NavigationBar(
           selectedIndex: state.page,
           onDestinationSelected: manager.onSetPage,
-          destinations: [
-            const NavigationDestination(
-                icon: Icon(Icons.device_hub), label: 'Device page'),
-            const NavigationDestination(
-                icon: Icon(Icons.device_hub), label: 'Device page')
+          destinations: const [
+            NavigationDestination(
+                icon: Icon(Icons.device_hub), label: 'Device'),
+            NavigationDestination(icon: Icon(Icons.device_hub), label: 'Device')
           ],
         ),
         body: <Widget>[
-          DeviceScreen(),
+          const DeviceScreen(),
           Container(),
         ][state.page]);
   }

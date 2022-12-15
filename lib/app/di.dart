@@ -21,6 +21,7 @@ class DI {
 
   void init() {
     log('Dependency Injection initialized');
+    deviceManager.onGetDevices();
   }
 }
 

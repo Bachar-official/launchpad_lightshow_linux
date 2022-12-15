@@ -1,0 +1,36 @@
+enum PadColor {
+  off(0),
+  white25(1),
+  white50(2),
+  white100(3),
+  red25(7),
+  red50(6),
+  red100(5),
+  orange25(11),
+  orange50(10),
+  orange100(9),
+  yellow25(15),
+  yelow50(14),
+  yellow100(13),
+  blue25(47),
+  blue50(46),
+  blue100(45),
+  violet25(55),
+  violet50(54),
+  violet100(53),
+  pink25(59),
+  pink50(58),
+  pink100(57),
+  lightblue25(39),
+  lightblue50(38),
+  lightblue100(37),
+  aquamarine25(31),
+  aquamarine50(30),
+  aquamarine100(29),
+  indigo25(51),
+  indigo50(50),
+  indigo100(49);
+
+  final int color;
+  const PadColor(this.color);
+}

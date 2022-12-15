@@ -27,6 +27,7 @@ class DeviceScreen extends ConsumerWidget {
       ),
       body: Center(
           child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           DropdownButton<AlsaMidiDevice>(
               hint: const Text('Choose device'),
