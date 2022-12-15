@@ -1,15 +1,16 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
 import 'package:launchpad_lightshow_flutter/entity/light_message.dart';
 import 'package:launchpad_lightshow_flutter/entity/pad_color.dart';
+import 'package:launchpad_lightshow_flutter/feature/audio/audio_manager.dart';
 import 'package:midi/midi.dart';
 import 'device_state_holder.dart';
 
 class DeviceManager {
   final DeviceStateHolder holder;
+  final AudioManager audioManager;
 
-  DeviceManager({required this.holder});
+  DeviceManager({required this.holder, required this.audioManager});
 
   void onGetDevices() {
     if (holder.deviceState.isDeviceConnected) {
@@ -47,6 +48,7 @@ class DeviceManager {
   void onConnectDevice() async {
     await holder.deviceState.device!.connect();
     onSetStream(holder.deviceState.device!.receivedMessages);
+    audioManager.onSetStream(holder.deviceState.device!.receivedMessages);
     log('Device ${holder.deviceState.device!.name} connected!');
     sendOKConnectedSignal(holder.deviceState.device!);
   }
@@ -62,6 +64,7 @@ class DeviceManager {
   void onDisconnectDevice() {
     holder.deviceState.device!.disconnect();
     onSetStream(null);
+    audioManager.onSetStream(null);
     onSetDevice(null);
     log('Device disconnected!');
   }
